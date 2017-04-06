@@ -2,8 +2,22 @@ GIFTS = {1=>"Toy Soldier", 2=>"Wooden Train", 4=>"Hoop", 8=>"Chess Board", 16=>"
 
 def gifts(number)
   i = number
-  arr = []
+  result = []
 
-  arr << GIFTS[i]
+  if GIFTS[i] == nil
+    special_arr = (1...i).to_a
 
+    special_arr.each do |num|
+      if GIFTS.has_key? num
+        result << GIFTS[num]
+      end
+    end
+  elsif
+    result << GIFTS[i]
+  end
+  result
 end
+
+
+p gifts(1)
+p gifts(3)
