@@ -1,4 +1,4 @@
-require_relative '../kata/kata2'
+require_relative '../kata/padded_numbers'
 
 describe 'kata2' do
 
