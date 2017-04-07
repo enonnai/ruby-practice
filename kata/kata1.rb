@@ -16,6 +16,6 @@ def gifts(number)
     result << GIFTS[number]
   end
 
-  result
+  result.sort
 end
 
