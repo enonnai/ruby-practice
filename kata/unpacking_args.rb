@@ -1,5 +1,3 @@
 def spread(func, args)
-  func.call(args[0],args[1])
+  func.call(*args)
 end
-
-some_function = lambda {|x,y| x + y }
