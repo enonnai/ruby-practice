@@ -1,4 +1,4 @@
-require_relative '../kata/kata1'
+require_relative '../kata/santas_missing_gift_list'
 
 describe 'kata1' do
 
