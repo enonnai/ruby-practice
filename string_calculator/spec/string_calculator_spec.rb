@@ -14,4 +14,11 @@ describe StringCalculator do
       expect(string.add).to eq 1
     end
   end
+
+  context "when a string has two numbers" do
+    it "returns their sum" do
+      string = StringCalculator.new("1,2")
+      expect(string.add).to eq 3
+    end
+  end
 end
