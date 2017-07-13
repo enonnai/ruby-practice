@@ -5,27 +5,22 @@ class StringCalculator
   end
 
   def add
-    sum = 0
     if @string.empty?
-      return_zero
-    elsif @string.chars.count == 1 && @string !~ /\D/
-      return_single_number
+      0
+    elsif is_a_single_number?
+      @string.to_i
     else
-      return_sum
+      sum
     end
   end
 
   private
 
-  def return_zero
-    0
+  def is_a_single_number?
+    @string.chars.count == 1 && @string !~ /\D/
   end
 
-  def return_single_number
-    @string.to_i
-  end
-
-  def return_sum
+  def sum
     sum = 0
     @string.chars.each do |char|
       sum += char.to_i
