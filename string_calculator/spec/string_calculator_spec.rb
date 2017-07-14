@@ -21,4 +21,11 @@ describe StringCalculator do
       expect(subject.add).to eq 3
     end
   end
+
+  context "when a string has a bigger amount of numbers" do
+    it "returns their sum" do
+      subject = StringCalculator.new("1,2,1,2")
+      expect(subject.add).to eq 6
+    end
+  end
 end
