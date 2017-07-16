@@ -15,14 +15,14 @@ describe StringCalculator do
     end
   end
 
-  context "when a string has two numbers" do
+  context "when a string has two numbers separated by a comma" do
     it "returns their sum" do
       subject = StringCalculator.new("1,2")
       expect(subject.add).to eq 3
     end
   end
 
-  context "when a string has a bigger amount of numbers" do
+  context "when a string has more than two numbers separated by commas" do
     it "returns their sum" do
       subject = StringCalculator.new("1,2,1,2")
       expect(subject.add).to eq 6

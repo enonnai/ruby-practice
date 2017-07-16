@@ -21,10 +21,17 @@ class StringCalculator
   end
 
   def sum
-    sum = 0
-    @string.chars.each do |char|
-      sum += char.to_i
+    i = 0
+    array = []
+    while i < @string.length do
+      if @string[i] !~ /\D/ && @string[i+1] == "," || @string[i+1] == nil
+        array << @string[i].to_i
+        i += 2
+      else
+        break
+        "Not a valid input"
+      end
     end
-    sum
+    array.inject(:+)
   end
 end
