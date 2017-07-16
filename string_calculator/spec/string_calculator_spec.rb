@@ -29,16 +29,6 @@ describe StringCalculator do
     end
   end
 
-  context "when a string is invalid" do
-    it "returns an appropriate message" do
-      subject = StringCalculator.new("1.2")
-      subject2 = StringCalculator.new("1.2.3")
-      message = "Not a valid input"
-      expect(subject.add).to eq message
-      expect(subject2.add).to eq message
-    end
-  end
-
   context "when a string has numbers separated by commas and new lines" do
     it "returns their sum" do
       subject = StringCalculator.new("1\n2,3")
@@ -50,6 +40,26 @@ describe StringCalculator do
     it "returns their sum" do
       subject = StringCalculator.new("1\n2\n3")
       expect(subject.add).to eq 6
+    end
+  end
+
+  context "when a string has numbers separated by other symbols" do
+    it "returns invalid input message" do
+      subject = StringCalculator.new("1;2")
+      subject2 = StringCalculator.new("1;2-3")
+      message = "Not a valid input"
+      expect(subject.add).to eq message
+      expect(subject2.add).to eq message
+    end
+  end
+
+  context "when a string has numbers separated by a comma and a new line" do
+    it "returns invalid input message" do
+      subject = StringCalculator.new("1,\n2")
+      subject2 = StringCalculator.new("1,\n")
+      message = "Not a valid input"
+      expect(subject.add).to eq message
+      expect(subject2.add).to eq message
     end
   end
 end

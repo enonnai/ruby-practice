@@ -21,19 +21,24 @@ class StringCalculator
   end
 
   def sum
-    i = 0
-    array = []
-    while i < @string.length do
-      if @string[i] !~ /\D/ && @string[i+1] == "," || @string[i+1] == "\n" || @string[i+1] == nil
-        array << @string[i].to_i
-        i += 2
-      else
-        return "Not a valid input"
-      end
+    special = "?<>';?[]}{=-)(*&^%$#`~{}"
+    regex = /[#{special.gsub(/./){|char| "\\#{char}"}}]/
+    return "Not a valid input" if is_an_invalid_string?
+    array = @string.split(/[\n,]/)
+    if array.include?("")
+      return "Not a valid input"
+    elsif array.join !~ regex
+      array.map {|char| char.to_i}.inject(:+)
+    else
+      return "Not a valid input"
     end
-    array.inject(:+)
   end
+
+  def is_an_invalid_string?
+    @string.include?(",\n") || @string.include?("\n,")
+  end
+
 end
 
-str = StringCalculator.new("1.2")
-p str.add
+subject2 = StringCalculator.new("1,\n")
+subject2.add
