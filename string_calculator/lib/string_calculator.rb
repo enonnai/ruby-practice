@@ -28,10 +28,12 @@ class StringCalculator
         array << @string[i].to_i
         i += 2
       else
-        break
-        "Not a valid input"
+        return "Not a valid input"
       end
     end
     array.inject(:+)
   end
 end
+
+str = StringCalculator.new("1.2")
+p str.add

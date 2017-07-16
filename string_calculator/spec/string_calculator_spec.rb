@@ -28,4 +28,14 @@ describe StringCalculator do
       expect(subject.add).to eq 6
     end
   end
+
+  context "when a string is invalid" do
+    it "returns an appropriate message" do
+      subject = StringCalculator.new("1.2")
+      subject2 = StringCalculator.new("1.2.3")
+      message = "Not a valid input"
+      expect(subject.add).to eq message
+      expect(subject2.add).to eq message
+    end
+  end
 end
