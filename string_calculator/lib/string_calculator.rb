@@ -1,5 +1,8 @@
 class StringCalculator
 
+  SPECIAL_CHARACTERS = "?<>';?[]}{=-)(*&^%$#`~{}"
+  REGEX = /[#{SPECIAL_CHARACTERS.gsub(/./){|char| "\\#{char}"}}]/
+
   def initialize(string)
     @string = string
   end
@@ -21,13 +24,11 @@ class StringCalculator
   end
 
   def sum
-    special = "?<>';?[]}{=-)(*&^%$#`~{}"
-    regex = /[#{special.gsub(/./){|char| "\\#{char}"}}]/
     return "Not a valid input" if is_an_invalid_string?
     array = @string.split(/[\n,]/)
     if array.include?("")
       return "Not a valid input"
-    elsif array.join !~ regex
+    elsif array.join !~ REGEX
       array.map {|char| char.to_i}.inject(:+)
     else
       return "Not a valid input"
