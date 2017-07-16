@@ -38,4 +38,18 @@ describe StringCalculator do
       expect(subject2.add).to eq message
     end
   end
+
+  context "when a string has numbers separated by commas and new lines" do
+    it "returns their sum" do
+      subject = StringCalculator.new("1\n2,3")
+      expect(subject.add).to eq 6
+    end
+  end
+
+  context "when a string has numbers separated by new lines" do
+    it "returns their sum" do
+      subject = StringCalculator.new("1\n2\n3")
+      expect(subject.add).to eq 6
+    end
+  end
 end
